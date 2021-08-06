@@ -13,7 +13,6 @@ import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import Modal from './Modal'
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
-import { API_KEY } from '../../config'
 
 const useStyles = makeStyles({
     root: {
@@ -47,6 +46,8 @@ const useStyles = makeStyles({
 })
 
 const Landing = () => {
+    document.title="Currency Converter"
+
     const fromData = useContext(CurrencyContext)
 
     const classes = useStyles()
@@ -74,12 +75,12 @@ const Landing = () => {
     }, [])    */
 
     useEffect(() => {
-        fetch(`http://data.fixer.io/api/latest?access_key=${API_KEY}`)        
+        fetch('http://data.fixer.io/api/latest?access_key='+process.env.REACT_APP_FIXER_API_KEY)        
         .then(res => res.json())
         .then(data => {
             setFromRate(data.rates[fromData.fromCode])
             setToRate(data.rates[fromData.toCode])            
-        })
+        })        
     }, [fromData.fromCode, fromData.toCode])
     
     const handleFromAmount = (e) => {        
