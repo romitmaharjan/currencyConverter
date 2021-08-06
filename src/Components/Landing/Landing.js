@@ -13,6 +13,8 @@ import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import Modal from './Modal'
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
+import { API_KEY } from '../../config'
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 500
@@ -72,7 +74,7 @@ const Landing = () => {
     }, [])    */
 
     useEffect(() => {
-        fetch('http://data.fixer.io/api/latest?access_key=INSERT_API_KEY')        
+        fetch(`http://data.fixer.io/api/latest?access_key=${API_KEY}`)        
         .then(res => res.json())
         .then(data => {
             setFromRate(data.rates[fromData.fromCode])
