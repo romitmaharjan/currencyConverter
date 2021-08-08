@@ -16,16 +16,18 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 500
+        maxWidth: 400, 
+        margin: '0 auto',
+        paddingTop: '100px'
     },
     title: {
-        fontSize: 14
+        fontSize: 20
     },
     fields: {
         border: '1px solid black',
-        margin: 20,
-        borderRadius: 5,
-        padding: '16px !important',
+        margin: '10px 20px',
+        borderRadius: 20,
+        padding: '10px !important',
         textAlign: 'left'
     },
     skeleton: {
@@ -119,13 +121,13 @@ const Landing = () => {
         {fromData.open && <Modal open={fromData.toggleOpen} />}
         <div className={classes.root}>
             <Card className={classes.skeleton}>
-                <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                <CardContent style={{'padding': '10px'}}>
+                    <Typography className={classes.title}>
                         Swap
                     </Typography>
                 </CardContent>
                 <CardContent className={classes.fields}>
-                    <Typography variant="h7" component="h7" color="textSecondary" gutterBottom>
+                    <Typography variant="h7" component="h7">
                         From
                     </Typography>
                     <br />
@@ -135,7 +137,7 @@ const Landing = () => {
                         variant="outlined"
                         color="primary"
                         onClick={handleFromClick}
-                        startIcon={fromData.fromFlag === "" ? "" : <img src={fromData.fromFlag} height="20px" width="30px"/> } 
+                        startIcon={fromData.fromFlag === "" ? "" : <img src={fromData.fromFlag} alt={fromData.fromCode} height="20px" width="30px"/> } 
                     >   
                         {fromData.fromCode === "" ? "From" : fromData.fromCode}   
                         <ExpandMore />                   
@@ -147,7 +149,7 @@ const Landing = () => {
                         InputProps={{disableUnderline: true}}
                         required        
                         onChange={handleFromAmount}    
-                        style={{"float":"right"}}     
+                        style={{"float":"right", "width": '150px'}}     
                         placeholder="0.0"   
                         value={fromAmount}                               
                     /> 
@@ -158,7 +160,7 @@ const Landing = () => {
                 </IconButton>
                 }
                 <CardContent className={classes.fields}>
-                    <Typography variant="h7" component="h7" color="textSecondary" gutterBottom>
+                    <Typography variant="h7" component="h7">
                         To
                     </Typography>
                     <br />
@@ -166,9 +168,9 @@ const Landing = () => {
                     <Button 
                         className={classes.mainButton}
                         variant="outlined"
-                        color="primary"
+                        color="secondary"
                         onClick={handleToClick}
-                        startIcon={fromData.toFlag === "" ? "" : <img src={fromData.toFlag} height="20px" width="30px"/> } 
+                        startIcon={fromData.toFlag === "" ? "" : <img src={fromData.toFlag} alt={fromData.toCode} height="20px" width="30px"/> } 
                     >   
                         {fromData.toCode === "" ? "To" : fromData.toCode} 
                         <ExpandMore />                     
@@ -180,7 +182,7 @@ const Landing = () => {
                         InputProps={{disableUnderline: true}}
                         required        
                         onChange={handleToAmount}    
-                        style={{"float":"right"}}  
+                        style={{"float":"right", "width": '150px'}}  
                         placeholder="0.0"   
                         value={toAmount}                                                   
                     />

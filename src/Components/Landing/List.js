@@ -34,7 +34,6 @@ const CurrencyList = (props) => {
     const classes = useStyles()
     const [countries, setCountries] = useState([])
     const [filtered, setFiltered] = useState([])
-    const [open, toggleOpen] = useState(false)
 
     useEffect(() => {        
         const fetchData = async () => {
@@ -49,12 +48,10 @@ const CurrencyList = (props) => {
       useEffect(() => {
         setFiltered(
           countries.filter((country) =>
-            country.currencies[0].name.toUpperCase().includes((props.searchedText).toUpperCase())
+            country.name.toUpperCase().includes((props.searchedText).toUpperCase())
           )
         )
-      }, [countries, props.searchedText])
-
-      const handleBackdrop = () => toggleOpen(!open)
+      }, [countries, props.searchedText])      
 
       const handleClick = (selected) => {
           if(currency.source === true){

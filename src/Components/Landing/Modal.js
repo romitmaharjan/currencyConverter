@@ -42,24 +42,25 @@ const CurrencyDialog = (props) => {
 
     return(
         <div>            
-            <Dialog onClose={handleClose} open={true} maxWidth="lg">                
+            <Dialog onClose={handleClose} open={true} maxWidth="lg" style={{'borderRadius': '100px'}}>                
                 <MuiDialogTitle className={classes.root}>
                     <Typography variant="h6">Select a Currency</Typography>
                     {true ? (
                         <IconButton className={classes.closeButton} onClick={handleClose}>
                             <CloseIcon />
                         </IconButton>
-                    ) : null}     
-                        <TextField 
+                    ) : null}                                           
+                </MuiDialogTitle>
+                <DialogContent dividers>
+                <TextField 
                             id="fromCurrency"
                             variant="outlined"
-                            placeholder="Search Currency"
+                            placeholder="Search by Country"
                             className={classes.currencyBar}
                             size="small"
                             onChange={handleChange}
-                        />              
-                </MuiDialogTitle>
-                <DialogContent dividers>
+                            style={{"marginBottom": '10px'}}
+                        />
                     <List searchedText={search}/>
                 </DialogContent>                
             </Dialog>

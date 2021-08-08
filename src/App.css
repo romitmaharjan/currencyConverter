@@ -17,3 +17,7 @@ input[type=number] {
   padding: 0  !important;
   margin:0 !important
 }
+
+.MuiPaper-rounded{
+  border-radius: 20px !important;
+}
